@@ -1,0 +1,44 @@
+# Datasets & media — too large / not source, never commit
+*.mp4
+*.avi
+*.mov
+/dataset/
+/split/
+/merged/
+original_frames/
+mask_frames/
+images/
+labels/
+*.png
+*.jpg
+*.jpeg
+!docs/**/*.png
+!docs/**/*.jpg
+
+# Trained weights & runs
+*.pt
+*.pth
+/runs/
+/output/
+weights/
+
+# Logs
+*.log
+conversion_log.txt
+verification_log.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+*.egg-info/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
