@@ -12,8 +12,8 @@ labels/
 *.png
 *.jpg
 *.jpeg
-!docs/**/*.png
-!docs/**/*.jpg
+!demo/**/*.png
+!demo/**/*.jpg
 
 # Trained weights & runs
 *.pt
