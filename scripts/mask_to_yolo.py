@@ -3,6 +3,8 @@ mask_to_yolo.py — Convert color-coded segmentation masks to YOLO segmentation 
 
 This script processes mask images, extracts polygons per class color, and generates
 YOLO-format label files with train/val/test splitting.
+
+Part of the AI Automated Road Safety Audit project.
 """
 
 import os
@@ -23,8 +25,11 @@ import numpy as np
 
 # Input/Output paths
 # INPUT_ROOT must contain original_frames/ and mask_frames/ for ONE video.
-INPUT_ROOT = Path(r"C:\Users\sasi3\Desktop\PROJECT_RSA\RV_1\DS")
-OUTPUT_ROOT = INPUT_ROOT / "split"   # creates split/train, split/valid, split/test + data.yaml here
+# Set via environment variable or edit directly:
+#   export RSA_INPUT_ROOT=/path/to/video_dataset
+#   export RSA_OUTPUT_ROOT=/path/to/output
+INPUT_ROOT = Path(os.environ.get("RSA_INPUT_ROOT", r"C:\path\to\your\video_dataset"))
+OUTPUT_ROOT = Path(os.environ.get("RSA_OUTPUT_ROOT", INPUT_ROOT / "split"))  # creates split/train, split/valid, split/test + data.yaml here
 LOG_FILE = OUTPUT_ROOT / "conversion_log.txt"
 
 # Original frames and mask frames are exported in DIFFERENT formats — set both.

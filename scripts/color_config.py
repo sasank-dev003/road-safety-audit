@@ -8,6 +8,8 @@ GUI tool to visually configure class colors for predict.py.
 - Click Save → rewrites CLASS_CONFIG block in predict.py automatically
 
 Run this before inference to set your preferred colors.
+
+Part of the AI Automated Road Safety Audit project.
 """
 
 import tkinter as tk

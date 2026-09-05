@@ -6,7 +6,7 @@ by rendering them back onto the original frames, and computes quality
 statistics + per-frame anomaly flags — so annotation problems get caught
 BEFORE a training run, not after a bad mAP.
 
-Road Safety Audit Project — IIT Bhubaneswar
+Part of the AI Automated Road Safety Audit project.
 
 Output:
     verify_output/
@@ -28,9 +28,13 @@ from collections import defaultdict
 # CONFIGURATION — edit before running
 # ─────────────────────────────────────────
 
-IMAGES_DIR = r"C:\Users\sasi3\Desktop\project\AfterFX\ROAD_VIDEO_5\original_frames"
-LABELS_DIR = r"C:\Users\sasi3\Desktop\project\AfterFX\ROAD_VIDEO_5\labels"
-OUTPUT_DIR = r"C:\Users\sasi3\Desktop\project\AfterFX\ROAD_VIDEO_5\verify_output"
+# Set via environment variables or edit directly:
+#   export RSA_IMAGES_DIR=/path/to/original_frames
+#   export RSA_LABELS_DIR=/path/to/labels
+#   export RSA_VERIFY_OUTPUT=/path/to/verify_output
+IMAGES_DIR = os.environ.get("RSA_IMAGES_DIR", r"C:\path\to\original_frames")
+LABELS_DIR = os.environ.get("RSA_LABELS_DIR", r"C:\path\to\labels")
+OUTPUT_DIR = os.environ.get("RSA_VERIFY_OUTPUT", r"C:\path\to\verify_output")
 
 IMAGE_EXT = ".png"   # original_frames are lossless PNG — verify pre-merge, pre-JPEG-conversion
 

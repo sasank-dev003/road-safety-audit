@@ -29,19 +29,22 @@ import logging
 # ─────────────────────────────────────────
 
 # Add all your video dataset roots here
-VIDEO_DATASETS = [
-    r"C:\Users\sasi3\Desktop\project\AfterFX\ROAD_VIDEO_1",
-    r"C:\Users\sasi3\Desktop\project\AfterFX\ROAD_VIDEO_2",
-    r"C:\Users\sasi3\Desktop\project\AfterFX\ROAD_VIDEO_3",
-    # add more as needed...
-]
+# Set via environment variable or edit directly:
+#   export RSA_VIDEO_DATASETS="/path/to/video1;/path/to/video2;/path/to/video3"
+# Multiple paths separated by semicolon (;)
+VIDEO_DATASETS = os.environ.get(
+    "RSA_VIDEO_DATASETS",
+    r"C:\path\to\video1;C:\path\to\video2;C:\path\to\video3"
+).split(";")
 
 # Subfolder names inside each video dataset
 IMAGES_SUBDIR = "original_frames"
 LABELS_SUBDIR = "labels"
 
 # Where to save the merged + split output
-MERGED_DIR = r"C:\Users\sasi3\Desktop\project\AfterFX\merged"
+# Set via environment variable or edit directly:
+#   export RSA_MERGED_DIR=/path/to/merged
+MERGED_DIR = os.environ.get("RSA_MERGED_DIR", r"C:\path\to\merged")
 
 # File extension for images
 IMAGE_EXT = ".png"

@@ -1,6 +1,6 @@
 """
 YOLOv11 Segmentation Training Script
-Road Safety Audit Project — IIT Bhubaneswar
+AI Automated Road Safety Audit Project
 
 Portable: auto-detects GPU and adjusts batch size / workers accordingly.
 Toggle classes on/off via ACTIVE_CLASSES below.
@@ -19,10 +19,14 @@ from datetime import datetime
 # ─────────────────────────────────────────────
 
 # Root of your dataset (contains train/ val/ test/ folders)
-DATASET_ROOT = r"C:\Users\YourName\dataset\split"
+# Set via environment variable or edit directly:
+#   export RSA_DATASET_ROOT=/path/to/dataset/split
+DATASET_ROOT = os.environ.get("RSA_DATASET_ROOT", r"C:\path\to\dataset\split")
 
 # Where to save training runs
-OUTPUT_DIR = r"C:\Users\YourName\runs"
+# Set via environment variable or edit directly:
+#   export RSA_OUTPUT_DIR=/path/to/runs
+OUTPUT_DIR = os.environ.get("RSA_OUTPUT_DIR", r"C:\path\to\runs")
 
 # YOLOv11 model size: n / s / m / l / x  (n=fastest, x=most accurate)
 MODEL_SIZE = "s"
@@ -76,13 +80,13 @@ def detect_hardware():
 
             print(f"[GPU] {gpu_name} — {vram_gb:.1f} GB VRAM")
 
-            if vram_gb >= 15:           # Kaggle T4, lab GPU
+            if vram_gb >= 15:           # High-end GPU (e.g., 24GB+)
                 batch, workers = 16, 8
                 tier = "high-end"
-            elif vram_gb >= 8:          # mid-range
+            elif vram_gb >= 8:          # Mid-range GPU (e.g., 8-16GB)
                 batch, workers = 8, 4
                 tier = "mid-range"
-            else:                       # RTX 4050 6GB and similar
+            else:                       # Entry-level GPU (e.g., 6GB)
                 batch, workers = 4, 2
                 tier = "low VRAM"
 

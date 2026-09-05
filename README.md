@@ -1,7 +1,7 @@
 # Road Safety Audit — Computer Vision Pipeline
 
-Automated road infrastructure detection from dashcam footage, built as part of a
-Road Safety Audit project at IIT Bhubaneswar. A YOLO11 segmentation model is
+Automated road infrastructure detection from dashcam footage, built as part of the
+**AI Automated Road Safety Audit** project. A YOLO11 segmentation model is
 trained to detect the same road elements a human safety auditor would look
 for — lane markings, kerbs, crash barriers, and road signage — directly from
 ordinary dashcam video.
@@ -67,7 +67,7 @@ predict.py                → runs inference on new video, draws segmentation
 | `verify_labels.py` | QA tool — renders generated labels back onto frames for visual spot-checking, computes per-class stats, and flags anomalous frames (empty labels, malformed polygons, class-count outliers, `SHOULDER_LANE`/`CENTRE_LANE` overlap, etc.) *before* burning a training run on bad annotations. |
 | `generate_ae_review_list.py` | Turns a `verify_labels.py` run into a single AE-ready review list — flagged frames plus candidate frames for any class that came back with zero instances (likely a color mis-pick). |
 | `merge_datasets.py` | Combines multiple per-video datasets (each already converted to YOLO labels) into one merged, re-split dataset. |
-| `train.py` | Trains YOLO11-seg. Auto-detects GPU and scales batch/workers to VRAM (runs unmodified on a lab RTX 4090 or a laptop RTX 4050), builds the active class list dynamically, applies road-scene-tuned augmentation, evaluates the best checkpoint on the test set. |
+| `train.py` | Trains YOLO11-seg. Auto-detects GPU and scales batch/workers to VRAM (runs unmodified on high-end or entry-level GPUs), builds the active class list dynamically, applies road-scene-tuned augmentation, evaluates the best checkpoint on the test set. |
 | `predict.py` | Runs the trained model on a video: segmentation classes drawn as translucent masks (bitmap-based, alpha-blended straight from the raw predicted mask — no polygon artifacts), sign classes drawn as bounding boxes. |
 | `color_config.py` | Small GUI (Tkinter) for picking/adjusting the display colors and mask opacity used in `predict.py`, and writing them back into the script. |
 

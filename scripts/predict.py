@@ -2,7 +2,7 @@
 predict.py
 ----------
 YOLOv11 Segmentation — Video Inference
-Road Safety Audit Project — IIT Bhubaneswar
+AI Automated Road Safety Audit Project
 
 - Segmentation classes  → colored translucent masks (retina-style overlay)
 - Sign classes          → bounding boxes only
@@ -10,6 +10,7 @@ Road Safety Audit Project — IIT Bhubaneswar
 - Output saved as a new video file alongside the input
 """
 
+import os
 import cv2
 import numpy as np
 from pathlib import Path
@@ -20,10 +21,14 @@ from ultralytics import YOLO
 # ─────────────────────────────────────────────
 
 # Path to your trained weights
-WEIGHTS = r"H:\sasank\AGAIN RESET\output\yolo11s_seg_20260623_2125\weights\best.pt"
+# Set via environment variable or edit directly:
+#   export RSA_WEIGHTS=/path/to/best.pt
+WEIGHTS = os.environ.get("RSA_WEIGHTS", r"C:\path\to\best.pt")
 
 # Input video
-INPUT_VIDEO = r"H:\sasank\AGAIN RESET\VID-20260623-WA0017.mp4"
+# Set via environment variable or edit directly:
+#   export RSA_INPUT_VIDEO=/path/to/input.mp4
+INPUT_VIDEO = os.environ.get("RSA_INPUT_VIDEO", r"C:\path\to\input.mp4")
 # Output video (leave empty "" to auto-name alongside input)
 OUTPUT_VIDEO = ""
 

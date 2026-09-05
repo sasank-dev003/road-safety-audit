@@ -1,6 +1,6 @@
 """
 generate_ae_review_list.py
----------------------------
+--------------------------
 Builds a single, AE-ready review list from a verify_labels.py run:
 
   1. Flagged frames (from flagged_frames.txt) — one stem per line, in priority order.
@@ -13,6 +13,8 @@ verify_output/flagged_frames.txt and reads labels/ directly).
 
 Output: verify_output/ae_review_list.txt — copy stems from here straight into
 After Effects' project search, one at a time.
+
+Part of the AI Automated Road Safety Audit project.
 """
 
 import os
